@@ -1,0 +1,74 @@
+{
+  "planets": {
+    "mercury": {
+      "name": "Mercury",
+      "symbol": "☿",
+      "L0": 252.2509,
+      "L1": 149472.6746,
+      "color": "#a0a0a0",
+      "orbitalPeriod": 87.969
+    },
+    "venus": {
+      "name": "Venus",
+      "symbol": "♀",
+      "L0": 181.9798,
+      "L1": 58517.8157,
+      "color": "#e8c56d",
+      "orbitalPeriod": 224.701
+    },
+    "mars": {
+      "name": "Mars",
+      "symbol": "♂",
+      "L0": 355.4330,
+      "L1": 19140.2993,
+      "color": "#cf5637",
+      "orbitalPeriod": 686.971
+    },
+    "jupiter": {
+      "name": "Jupiter",
+      "symbol": "♃",
+      "L0": 34.3515,
+      "L1": 3034.9057,
+      "color": "#c4956a",
+      "orbitalPeriod": 4332.59
+    },
+    "saturn": {
+      "name": "Saturn",
+      "symbol": "♄",
+      "L0": 50.0774,
+      "L1": 1222.1138,
+      "color": "#e3d5a0",
+      "orbitalPeriod": 10759.22
+    }
+  },
+  "lunarNodes": {
+    "rahu": {
+      "name": "Rahu",
+      "symbol": "☊",
+      "description": "Ascending Lunar Node",
+      "L0": 125.0445,
+      "L1": -1934.1363,
+      "color": "#666"
+    },
+    "ketu": {
+      "name": "Ketu",
+      "symbol": "☋",
+      "description": "Descending Lunar Node",
+      "color": "#444"
+    }
+  },
+  "zodiacSigns": [
+    { "name": "Aries", "symbol": "♈", "start": 0 },
+    { "name": "Taurus", "symbol": "♉", "start": 30 },
+    { "name": "Gemini", "symbol": "♊", "start": 60 },
+    { "name": "Cancer", "symbol": "♋", "start": 90 },
+    { "name": "Leo", "symbol": "♌", "start": 120 },
+    { "name": "Virgo", "symbol": "♍", "start": 150 },
+    { "name": "Libra", "symbol": "♎", "start": 180 },
+    { "name": "Scorpio", "symbol": "♏", "start": 210 },
+    { "name": "Sagittarius", "symbol": "♐", "start": 240 },
+    { "name": "Capricorn", "symbol": "♑", "start": 270 },
+    { "name": "Aquarius", "symbol": "♒", "start": 300 },
+    { "name": "Pisces", "symbol": "♓", "start": 330 }
+  ]
+}

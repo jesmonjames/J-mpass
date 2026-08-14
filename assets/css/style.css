@@ -1,0 +1,1148 @@
+/* ============================================================
+   PERSONAL COMPASS — Design System
+   Tactical CRT aesthetic matching Time Machine Portfolio
+   ============================================================ */
+
+/* ── FONTS ── */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Black+Ops+One&family=Stardos+Stencil:wght@400;700&family=Goldman:wght@400;700&family=Wallpoet&family=Share+Tech+Mono&family=Roboto+Mono:wght@400;700&family=Courier+Prime:wght@400;700&display=swap');
+
+/* ── ROOT TOKENS ── */
+:root {
+  --font-serif: 'Space Mono', monospace;
+  --font-mono: 'Space Mono', monospace;
+  --font-sans: 'Space Mono', monospace;
+  --font-main: 'Space Mono', monospace;
+  --scan-opacity: 0.15;
+  --compass-size: min(340px, 80vw);
+}
+
+/* ── BASE THEME (dark CRT) ── */
+body[class^="theme-"] {
+  --bg-color: #050505;
+  --bg-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.05)),
+    repeating-linear-gradient(0deg, transparent 0px, transparent 1px, rgba(255, 255, 255, 0.03) 2px);
+  --bg-size: 100% 3px, 3px 100%, 100% 4px;
+  --card-bg: rgba(10, 10, 10, 0.9);
+  --card-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.5);
+  --crt-flicker: flicker 0.15s infinite;
+}
+
+/* ── CHAKRA THEMES ── */
+body.theme-root {
+  --bg-color: #fff2f2;
+  --card-bg: rgba(255, 240, 240, 0.95);
+  --text-main: #b30000;
+  --text-muted: #800000;
+  --border-color: #ffcccc;
+  --accent-orange: #ff8800;
+  --accent-red: #ff0000;
+  --accent-green: #2ecc71;
+  --tape-color: #ff0000;
+  --text-glow: none;
+  --font-main: 'Stardos Stencil', system-ui;
+  --ui-label: "ALERT MODE (LIGHT)";
+  --bg-image: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.05) 50%),
+    repeating-linear-gradient(0deg, transparent 0px, transparent 1px, rgba(0,0,0,0.03) 2px);
+  --hero-bg: #000;
+  --hero-text: #fff;
+}
+
+body.theme-sacral {
+  --bg-color: #ff8c00;
+  --card-bg: rgba(255, 140, 0, 0.9);
+  --text-main: #0a0500;
+  --text-muted: #331a00;
+  --border-color: #000000;
+  --accent-orange: #ffaa00;
+  --accent-red: #ff3333;
+  --accent-green: #000000;
+  --tape-color: #000000;
+  --text-glow: none;
+  --font-main: 'Black Ops One', system-ui;
+  --ui-label: "HAZARD MODE (VIVID)";
+  --bg-image: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.1) 50%),
+    repeating-linear-gradient(0deg, transparent 0px, transparent 1px, rgba(0,0,0,0.08) 2px);
+  --hero-bg: #000;
+  --hero-text: #fff;
+}
+
+body.theme-solar {
+  --bg-color: #ffffea;
+  --card-bg: rgba(255, 255, 230, 0.95);
+  --text-main: #665c00;
+  --text-muted: #998a00;
+  --border-color: #e6e600;
+  --accent-orange: #ff8800;
+  --accent-red: #ff3333;
+  --accent-green: #27ae60;
+  --tape-color: #b38f00;
+  --text-glow: none;
+  --font-main: 'Share Tech Mono', monospace;
+  --ui-label: "COMMAND MODE (LIGHT)";
+  --bg-image: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.05) 50%),
+    repeating-linear-gradient(0deg, transparent 0px, transparent 1px, rgba(0,0,0,0.03) 2px);
+  --hero-bg: #000;
+  --hero-text: #fff;
+}
+
+body.theme-heart {
+  --bg-color: #051a05;
+  --card-bg: rgba(10, 30, 10, 0.95);
+  --text-main: #39ff14;
+  --text-muted: #1e800d;
+  --border-color: #124d08;
+  --accent-orange: #ffe81f;
+  --accent-red: #ff3333;
+  --accent-green: #39ff14;
+  --tape-color: #39ff14;
+  --text-glow: 0 0 12px rgba(57, 255, 20, 0.7);
+  --font-main: 'Space Mono', monospace;
+  --ui-label: "NIGHT VISION";
+  --hero-bg: #fff;
+  --hero-text: #000;
+}
+
+body.theme-throat {
+  --bg-color: #050a1a;
+  --card-bg: rgba(10, 15, 30, 0.95);
+  --text-main: #00ccff;
+  --text-muted: #006680;
+  --border-color: #003d4d;
+  --accent-orange: #ff8800;
+  --accent-red: #ff3333;
+  --accent-green: #39ff14;
+  --tape-color: #00ccff;
+  --text-glow: 0 0 12px rgba(0, 204, 255, 0.7);
+  --font-main: 'Goldman', system-ui;
+  --ui-label: "COMMS MODE";
+  --hero-bg: #fff;
+  --hero-text: #000;
+}
+
+body.theme-third-eye {
+  --bg-color: #0a0510;
+  --card-bg: rgba(15, 10, 25, 0.95);
+  --text-main: #9d4edd;
+  --text-muted: #4e276e;
+  --border-color: #2f1742;
+  --accent-orange: #ff8800;
+  --accent-red: #ff3333;
+  --accent-green: #39ff14;
+  --tape-color: #9d4edd;
+  --text-glow: 0 0 12px rgba(157, 78, 221, 0.7);
+  --font-main: 'Courier Prime', monospace;
+  --ui-label: "STEALTH MODE";
+  --hero-bg: #fff;
+  --hero-text: #000;
+}
+
+body.theme-crown {
+  --bg-color: #f0f4f8;
+  --card-bg: rgba(240, 245, 250, 0.95);
+  --text-main: #2c3e50;
+  --text-muted: #5d6d7e;
+  --border-color: #d5dbe0;
+  --accent-orange: #e67e22;
+  --accent-red: #c0392b;
+  --accent-green: #27ae60;
+  --tape-color: #34495e;
+  --text-glow: none;
+  --font-main: 'Roboto Mono', monospace;
+  --ui-label: "STRATEGIC (LIGHT)";
+  --bg-image: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.05) 50%),
+    repeating-linear-gradient(0deg, transparent 0px, transparent 1px, rgba(0,0,0,0.05) 2px);
+  --hero-bg: #000;
+  --hero-text: #fff;
+}
+
+/* ── RESET & BASE ── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
+  background-size: var(--bg-size);
+  background-attachment: fixed;
+  background-position: center;
+  color: var(--text-main);
+  font-family: var(--font-main);
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  text-shadow: var(--text-glow);
+  transition: background-color 0.5s, color 0.5s, text-shadow 0.5s;
+  animation: var(--crt-flicker);
+  min-height: 100vh;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.99; }
+  5% { opacity: 1.0; }
+  10% { opacity: 0.98; }
+  15% { opacity: 0.99; }
+  20% { opacity: 1.0; }
+  25% { opacity: 0.97; }
+  100% { opacity: 1.0; }
+}
+
+/* CRT vignette */
+body::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: radial-gradient(circle, rgba(0,0,0,0) 60%, rgba(0,0,0,0.6) 100%);
+  z-index: 999;
+  pointer-events: none;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-main);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* ── LOADER ── */
+.loader {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.loader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#loaderCanvas {
+  position: absolute;
+  top: 0; left: 0;
+  opacity: 0.15;
+  filter: blur(1px);
+}
+
+.loader-scanline {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(0deg, transparent 0%, rgba(0, 204, 255, 0.1) 50%, transparent 100%);
+  background-size: 100% 300px;
+  animation: scan 3s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes scan {
+  0% { background-position: 0% -300px; }
+  100% { background-position: 0% 100vh; }
+}
+
+.loader-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  width: 500px;
+  max-width: 90%;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 40px;
+  border: 1px solid rgba(0, 204, 255, 0.3);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 1);
+}
+
+.boot-header {
+  font-family: 'Black Ops One', system-ui;
+  color: #00ccff;
+  margin-bottom: 25px;
+  font-size: 16px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.boot-log {
+  font-family: 'Space Mono', monospace;
+  color: #006680;
+  font-size: 10px;
+  min-height: 60px;
+  text-align: left;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.progress-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.progress-bar {
+  flex-grow: 1;
+  height: 12px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid #003d4d;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  background: #00ccff;
+  box-shadow: 0 0 15px #00ccff;
+  transition: width 0.1s;
+}
+
+.boot-percent {
+  font-family: 'Space Mono', monospace;
+  color: #00ccff;
+  font-size: 14px;
+  width: 50px;
+  text-align: right;
+}
+
+.boot-status {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  margin-top: 20px;
+  color: #00ccff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* ── DASHBOARD LAYOUT ── */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 15px 35px;
+  max-width: 1600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+}
+
+/* ── TOP & BOTTOM BARS ── */
+.top-bar, .bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  transition: border-color 0.5s, color 0.5s;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bottom-bar {
+  border-bottom: none;
+  border-top: 1px solid var(--border-color);
+  margin-top: auto;
+  padding: 12px 0;
+}
+
+/* ── STATUS DOTS ── */
+.dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  background: var(--text-main);
+  box-shadow: var(--text-glow);
+  margin-right: 8px;
+  transition: background 0.5s, box-shadow 0.5s;
+}
+.dot.green { background: var(--text-main); box-shadow: 0 0 10px var(--text-main); }
+.dot.red { background: var(--accent-red); box-shadow: 0 0 10px var(--accent-red); }
+.dot.orange { background: var(--accent-orange); box-shadow: 0 0 10px var(--accent-orange); }
+.dot.gray { background: transparent; box-shadow: none; border: 1px solid var(--text-muted); }
+
+.animated-pulse { animation: pulse 1s infinite; }
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* ── MAIN LAYOUT ── */
+.main-layout {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 40px;
+  flex-grow: 1;
+  padding: 15px 0 40px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.main-layout::-webkit-scrollbar { width: 8px; }
+.main-layout::-webkit-scrollbar-track { background: var(--bg-color); border-left: 1px solid var(--border-color); }
+.main-layout::-webkit-scrollbar-thumb { background: var(--text-muted); border: 1px solid var(--bg-color); }
+
+/* ── SIDEBAR (Compass Panel) ── */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  height: calc(100vh - 140px);
+  overflow-y: auto;
+  overflow-x: visible;
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-muted) transparent;
+  z-index: 100;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--text-main);
+  padding: 20px 15px;
+  border-radius: 12px;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.sidebar::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 100%;
+  background: linear-gradient(transparent, color-mix(in srgb, var(--text-main) 6%, transparent), transparent);
+  background-size: 100% 400%;
+  animation: sidebarScan 10s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes sidebarScan {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% 100%; }
+}
+
+/* ── COMPASS CONTAINER ── */
+.compass-wrap {
+  position: relative;
+  width: var(--compass-size);
+  height: var(--compass-size);
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.compass-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 20px color-mix(in srgb, var(--text-main) 40%, transparent));
+}
+
+.compass-heading-display {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--text-main);
+  margin-top: 8px;
+  z-index: 2;
+  position: relative;
+}
+
+.compass-heading-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  display: block;
+  margin-top: 2px;
+}
+
+.compass-mode-tag {
+  text-align: center;
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  margin-top: 6px;
+  z-index: 2;
+  position: relative;
+  padding: 3px 8px;
+  border: 1px solid var(--border-color);
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+
+/* ── GEO DATA PANEL ── */
+.geo-panel {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--text-main);
+  padding: 14px;
+  z-index: 2;
+  position: relative;
+}
+
+.geo-panel h4 {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.geo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 16px;
+}
+
+.geo-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.geo-item .geo-label {
+  font-size: 8px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  font-family: var(--font-mono);
+}
+
+.geo-item .geo-value {
+  font-size: 13px;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+/* ── CONTENT GRID (right side) ── */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-content: start;
+}
+
+/* ── CARD SYSTEM ── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 24px;
+}
+
+.panel-header {
+  font-size: 14px;
+  letter-spacing: 4px;
+  color: var(--text-main);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--text-main), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--text-main) 50%, transparent);
+  box-shadow: 0 0 25px rgba(0,0,0,0.3), inset 0 0 30px rgba(0,0,0,0.3);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(0,0,0,0.2);
+}
+
+.card-header h3 {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+}
+
+.card-header .leds {
+  display: flex;
+  gap: 5px;
+}
+
+.card-body {
+  padding: 16px;
+}
+
+.card-footer {
+  padding: 10px 16px;
+  border-top: 1px solid var(--border-color);
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.15);
+}
+
+.card.full-width {
+  grid-column: 1 / -1;
+}
+
+/* ── SUN TRACKER ── */
+.sun-arc-container {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  margin-bottom: 12px;
+}
+
+.sun-arc-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.sun-times-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.sun-time-item {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 8px;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid var(--border-color);
+}
+
+.sun-time-item .st-label {
+  font-size: 8px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  font-family: var(--font-mono);
+}
+
+.sun-time-item .st-value {
+  font-size: 14px;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+.sun-position-data {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+.sun-pos-item {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.sun-pos-item span {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+/* ── MOON TRACKER ── */
+.moon-display {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 14px;
+}
+
+.moon-phase-visual {
+  width: 70px;
+  height: 70px;
+  flex-shrink: 0;
+}
+
+.moon-phase-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--text-main) 30%, transparent));
+}
+
+.moon-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.moon-phase-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.moon-illumination {
+  font-size: 22px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-main);
+}
+
+.moon-illumination-label {
+  font-size: 8px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+}
+
+.moon-times-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.moon-time-item {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 8px;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid var(--border-color);
+}
+
+.moon-time-item .mt-label {
+  font-size: 8px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  font-family: var(--font-mono);
+}
+
+.moon-time-item .mt-value {
+  font-size: 14px;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+/* ── PLANETARY ALIGNMENT ── */
+.planet-orbit-container {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  margin-bottom: 12px;
+}
+
+.planet-orbit-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.planet-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 8px;
+}
+
+.planet-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s;
+}
+
+.planet-item:hover {
+  border-color: var(--text-main);
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.planet-symbol {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.planet-name {
+  font-size: 9px;
+  font-family: var(--font-mono);
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.planet-longitude {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+/* ── SKY HEMISPHERE ── */
+.sky-dome-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.sky-dome-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── THEME BUTTONS ── */
+.themes {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.theme-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  padding: 5px 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+}
+
+.theme-btn:hover, .theme-btn.active {
+  border-color: var(--text-main);
+  color: var(--text-main);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--text-main) 30%, transparent);
+}
+
+.stats {
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+/* ── DATA STREAM ANIMATION ── */
+@keyframes dataStream {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-20px); opacity: 0; }
+}
+
+/* ── TIME DISPLAY ── */
+.time-display {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--text-main);
+}
+
+/* ── SEPARATOR ── */
+.separator { opacity: 0.3; }
+
+/* ── COMPASS LABEL BAR ── */
+.compass-title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  z-index: 2;
+  position: relative;
+}
+
+.compass-title-bar h2 {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--text-main);
+}
+
+.compass-title-bar .mode-label {
+  font-size: 8px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  padding: 3px 8px;
+  border: 1px solid var(--border-color);
+  background: rgba(0,0,0,0.2);
+}
+
+/* ── BACK LINK ── */
+.back-link {
+  position: fixed;
+  bottom: 60px;
+  right: 30px;
+  z-index: 998;
+  font-size: 9px;
+  font-family: var(--font-mono);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  padding: 6px 14px;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+}
+
+.back-link:hover {
+  color: var(--text-main);
+  border-color: var(--text-main);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--text-main) 30%, transparent);
+}
+
+/* ── ZODIAC TAG ── */
+.zodiac-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-main);
+  padding: 2px 8px;
+  border: 1px solid var(--border-color);
+  background: rgba(0,0,0,0.2);
+  letter-spacing: 1px;
+}
+
+/* ── MAGNETIC DECLINATION ── */
+.mag-dec-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 6px 8px;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid var(--border-color);
+  z-index: 2;
+  position: relative;
+}
+
+.mag-dec-row .md-label {
+  font-size: 8px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  font-family: var(--font-mono);
+}
+
+.mag-dec-row .md-value {
+  font-size: 12px;
+  color: var(--accent-orange);
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .sidebar {
+    position: static;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .compass-wrap {
+    --compass-size: 280px;
+  }
+  .content-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 10px 15px;
+  }
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+  .compass-wrap {
+    --compass-size: 260px;
+  }
+  .themes {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .bottom-bar {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .compass-wrap {
+    --compass-size: 220px;
+  }
+  .compass-heading-display {
+    font-size: 22px;
+  }
+}
+
+/* ── ZODIAC BELT ── */
+.zodiac-belt {
+  margin-top: 10px;
+  padding: 8px;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid var(--border-color);
+}
+
+.zodiac-belt h5 {
+  font-size: 8px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+.zodiac-positions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.zodiac-pos {
+  font-size: 9px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  padding: 2px 6px;
+  border: 1px solid var(--border-color);
+}
+
+.zodiac-pos .z-body {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+/* ── GOLDEN HOUR INDICATOR ── */
+.golden-hour-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 8px 10px;
+  border: 1px solid var(--border-color);
+  background: rgba(0,0,0,0.15);
+}
+
+.golden-hour-indicator .gh-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent-orange);
+  box-shadow: 0 0 8px var(--accent-orange);
+}
+
+.golden-hour-indicator .gh-dot.inactive {
+  background: var(--text-muted);
+  box-shadow: none;
+  opacity: 0.3;
+}
+
+.golden-hour-indicator .gh-text {
+  font-size: 9px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.golden-hour-indicator .gh-text.active {
+  color: var(--accent-orange);
+}
+
+/* ── RESPONSIVE GRID LAYOUT ── */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+.compass-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+}
+
+@media (min-width: 800px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .compass-panel {
+    grid-column: 1 / -1;
+  }
+  .compass-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .compass-panel {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+  }
+  .compass-layout {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+/* ── MILITARY GRADE CARDS ── */
+.card-corners {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+.card-corners::before, .card-corners::after {
+  content: "";
+  position: absolute;
+  width: 15px; height: 15px;
+  border: 2px solid var(--text-main);
+  opacity: 0.5;
+}
+.card-corners::before {
+  top: 0; left: 0;
+  border-right: none; border-bottom: none;
+}
+.card-corners::after {
+  bottom: 0; right: 0;
+  border-left: none; border-top: none;
+}
+
+.card {
+  border-radius: 0; /* Remove rounded corners for tactical look */
+  clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+}

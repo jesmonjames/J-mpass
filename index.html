@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>J-MPASS // TACTICAL NAVIGATION</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Teko:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- CSS Design System -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="theme-throat"> <!-- Throat Chakra theme for Tactical Blue/Cyan -->
+
+  <div class="crt-overlay"></div>
+  <div class="scanline"></div>
+
+  <div class="dashboard">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-main">
+        <h1>J-MPASS // TACTICAL NAVIGATION SYSTEM</h1>
+        <div class="subtitle" id="locationStatus">INITIALIZING...</div>
+      </div>
+      <div class="sys-time">
+        <div id="sysTime">00:00:00.00</div>
+        <div id="sysDate">YYYY.MM.DD</div>
+      </div>
+    </header>
+
+    <!-- Main Grid Layout -->
+    <div class="grid-container">
+
+      <!-- TOP/CENTER: Compass / Core Navigation -->
+      <section class="card panel compass-panel">
+        <div class="card-corners"></div>
+        <h2 class="panel-header">MAGNETIC & GYRO NAVIGATION</h2>
+        
+        <div class="compass-layout">
+          <div class="compass-wrapper">
+            <div id="compassSvg" style="width: 100%; height: 100%; max-width: 340px; max-height: 340px;"></div>
+          </div>
+          
+          <div class="compass-side-data">
+            <div class="compass-readout">
+              <div id="compassHeading">---°</div>
+              <div id="compassCardinal">--</div>
+            </div>
+
+            <div class="status-tag" id="compassMode">INITIALIZING SENSORS...</div>
+            <div class="status-tag" id="magStatusTag" style="margin-top: 5px;">MAG SENSOR: INITIALIZING...</div>
+            
+            <div class="data-row" style="margin-top: 20px; border-top: 1px dashed var(--border-color); padding-top: 10px;">
+              <div class="data-group" style="width: 100%;">
+                <div class="data-label">CURRENT COORDINATES</div>
+                <div class="data-value highlight" id="coordinatesDisplay" style="font-size: 0.9rem;">
+                  LAT: --<br>LNG: --<br>ALT: --
+                </div>
+              </div>
+              <div class="data-group" style="width: 100%; margin-top: 10px;">
+                <div class="data-label">MAGNETIC FIELD (µT)</div>
+                <div class="data-value highlight" id="magneticFieldDisplay" style="font-size: 0.9rem;">
+                  -- µT
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Solar Data -->
+      <section class="card panel">
+        <div class="card-corners"></div>
+        <h2 class="panel-header">SOLAR TELEMETRY</h2>
+        
+        <div class="data-grid">
+          <div class="data-group">
+            <div class="data-label">SUNRISE</div>
+            <div class="data-value" id="sunriseTime">--:--</div>
+          </div>
+          <div class="data-group">
+            <div class="data-label">SUNSET</div>
+            <div class="data-value" id="sunsetTime">--:--</div>
+          </div>
+          <div class="data-group">
+            <div class="data-label">SOLAR NOON</div>
+            <div class="data-value" id="solarNoonTime">--:--</div>
+          </div>
+          <div class="data-group">
+            <div class="data-label">GOLDEN HOUR</div>
+            <div class="data-value" id="goldenHourTime">--:--</div>
+          </div>
+        </div>
+
+        <div class="data-row" style="margin-top: 15px;">
+          <div class="data-group">
+            <div class="data-label">AZIMUTH</div>
+            <div class="data-value highlight" id="sunAzimuth">---°</div>
+          </div>
+          <div class="data-group">
+            <div class="data-label">ALTITUDE</div>
+            <div class="data-value highlight" id="sunAltitude">---°</div>
+          </div>
+          <div class="data-group">
+            <div class="data-label">ZODIAC</div>
+            <div class="data-value" id="sunZodiac">--</div>
+          </div>
+        </div>
+
+        <div class="golden-hour-status">
+          <div id="goldenHourDot" class="gh-dot"></div>
+          <span id="goldenHourText" class="gh-text">CALCULATING...</span>
+        </div>
+
+        <div id="sunArcSvg" style="margin-top: 15px; display: flex; justify-content: center;"></div>
+      </section>
+
+      <!-- Lunar Data -->
+      <section class="card panel">
+        <div class="card-corners"></div>
+        <h2 class="panel-header">LUNAR TELEMETRY</h2>
+
+        <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 15px;">
+          <div id="moonPhaseSvg" style="width: 70px; height: 70px;"></div>
+          <div>
+            <div class="data-value highlight" id="moonPhaseName" style="font-size: 1.5rem;">--</div>
+            <div class="data-label">ILLUMINATION: <span id="moonIllumination" style="color: var(--text-main)">--%</span></div>
+            <div class="data-label">CYCLE: <span id="moonWaxing" style="color: var(--text-main)">--</span></div>
+          </div>
+        </div>
+
+        <div class="data-grid">
+          <div class="data-group">
+            <div class="data-label">MOONRISE</div>
+            <div class="data-value" id="moonriseTime">--:--</div>
+          </div>
+          <div class="data-group">
+            <div class="data-label">MOONSET</div>
+            <div class="data-value" id="moonsetTime">--:--</div>
+          </div>
+          <div class="data-group">
+            <div class="data-label">AZIMUTH</div>
+            <div class="data-value highlight" id="moonAzimuth">---°</div>
+          </div>
+          <div class="data-group">
+            <div class="data-label">ALTITUDE</div>
+            <div class="data-value highlight" id="moonAltitude">---°</div>
+          </div>
+        </div>
+        
+        <div class="data-row" style="margin-top: 15px;">
+          <div class="data-group">
+            <div class="data-label">DISTANCE</div>
+            <div class="data-value" id="moonDistance">-- km</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Planetary Alignments -->
+      <section class="card panel">
+        <div class="card-corners"></div>
+        <h2 class="panel-header">PLANETARY ALIGNMENTS</h2>
+        
+        <div class="zodiac-belt" id="zodiacPositions">
+          <!-- Populated by JS -->
+        </div>
+
+        <div id="planetList" class="data-grid" style="grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+          <!-- Populated by JS -->
+        </div>
+
+        <div id="planetOrbitSvg" style="margin-top: 20px; display: flex; justify-content: center; height: 180px;"></div>
+      </section>
+
+      <!-- BOTTOM RIGHT: Sky Dome Projection -->
+      <section class="card panel">
+        <div class="card-corners"></div>
+        <h2 class="panel-header">HEMISPHERIC PROJECTION</h2>
+        
+        <div class="data-group" style="margin-bottom: 10px;">
+          <div class="data-label">LOCAL ZENITH MAP</div>
+        </div>
+
+        <div id="skyDomeSvg" style="width: 100%; height: 200px; display: flex; justify-content: center;"></div>
+        
+        <div style="margin-top: 15px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); opacity: 0.7;">
+          <p>> AZIMUTH: 0° NORTH, 90° EAST, 180° SOUTH, 270° WEST</p>
+          <p>> ALTITUDE: 0° HORIZON, 90° ZENITH</p>
+          <p>> NEGATIVE ALTITUDE INDICATES BODY IS BELOW HORIZON</p>
+        </div>
+      </section>
+      
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/suncalc.js"></script>
+  <script src="assets/js/compass.js"></script>
+  <script src="assets/js/celestial.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
