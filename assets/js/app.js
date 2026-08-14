@@ -75,6 +75,61 @@ const App = (() => {
     }
   }
 
+  function initAudio() {
+    const btn = document.getElementById('audioBtn');
+    if (!btn) return;
+
+    btn.addEventListener('click', () => {
+      if (!('speechSynthesis' in window)) {
+        alert("Audio telemetry is not supported in this browser.");
+        return;
+      }
+
+      // Read current values directly from DOM to get formatted text
+      const heading = document.getElementById('compassHeading')?.textContent || 'Unknown';
+      const cardinal = document.getElementById('compassCardinal')?.textContent || 'Unknown';
+      const magField = document.getElementById('magneticFieldDisplay')?.textContent || 'Unknown';
+      
+      const sunAz = document.getElementById('sunAzimuth')?.textContent || 'Unknown';
+      const sunAlt = document.getElementById('sunAltitude')?.textContent || 'Unknown';
+      const moonPhase = document.getElementById('moonPhaseName')?.textContent || 'Unknown';
+
+      const speechText = `
+        Current Heading: ${heading}, ${cardinal}.
+        Magnetic Field Strength: ${magField}.
+        Sun Azimuth: ${sunAz}.
+        Sun Altitude: ${sunAlt}.
+        Current Lunar Phase: ${moonPhase.toLowerCase()}.
+      `;
+
+      // Cancel any ongoing speech
+      window.speechSynthesis.cancel();
+
+      const utterance = new SpeechSynthesisUtterance(speechText);
+      utterance.rate = 1.0;
+      utterance.pitch = 0.9;
+      
+      // Try to find a synthetic/robotic voice if possible
+      const voices = window.speechSynthesis.getVoices();
+      const englishVoices = voices.filter(v => v.lang.startsWith('en'));
+      if (englishVoices.length > 0) {
+        // Simple heuristic to get a clear voice, often the first English one is good
+        utterance.voice = englishVoices.find(v => v.name.includes('Google') || v.name.includes('Microsoft')) || englishVoices[0];
+      }
+
+      window.speechSynthesis.speak(utterance);
+      
+      // Visual feedback
+      btn.style.boxShadow = "0 0 15px var(--accent-orange)";
+      btn.textContent = "PLAYING...";
+      
+      utterance.onend = () => {
+        btn.style.boxShadow = "none";
+        btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 5px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg> AUDIO STATUS`;
+      };
+    });
+  }
+
   function bootstrap() {
     console.log("PERSONAL COMPASS BOOT SEQUENCE INITIATED...");
     
@@ -89,6 +144,9 @@ const App = (() => {
     
     // 4. Acquire Location and Start Celestial Math
     initGeolocation();
+
+    // 5. Initialize Audio System
+    initAudio();
   }
 
   return { bootstrap };
@@ -96,3 +154,4 @@ const App = (() => {
 
 // Boot on load
 window.addEventListener('DOMContentLoaded', App.bootstrap);
+

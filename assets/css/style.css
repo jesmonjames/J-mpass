@@ -1146,3 +1146,28 @@ h1, h2, h3, h4 {
   border-radius: 0; /* Remove rounded corners for tactical look */
   clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
 }
+
+/* ── BUTTONS ── */
+.tactical-btn {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--text-main);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 6px 12px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+}
+
+.tactical-btn:hover {
+  background: var(--text-main);
+  color: var(--hero-text);
+  box-shadow: 0 0 15px var(--text-main);
+}
+.tactical-btn:active {
+  transform: scale(0.95);
+}
