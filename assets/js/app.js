@@ -80,8 +80,8 @@ const App = (() => {
     if (!btn) return;
 
     btn.addEventListener('click', () => {
-      if (!('speechSynthesis' in window)) {
-        alert("Audio telemetry is not supported in this browser.");
+      if (!window.speechSynthesis) {
+        alert("Audio telemetry requires a modern browser (Safari/Chrome/Edge). Try opening this link outside of the in-app browser!");
         return;
       }
 

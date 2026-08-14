@@ -176,38 +176,54 @@ const Compass = (() => {
     animFrame = requestAnimationFrame(smoothUpdate);
   }
 
+  let isAbsoluteEventFired = false;
+
+  function handleOrientationAbsolute(e) {
+    if (e.alpha !== null) {
+      isAbsoluteEventFired = true;
+      orientationSupported = true;
+      demoMode = false;
+      updateModeTag();
+      targetHeading = 360 - e.alpha;
+    }
+  }
+
   function initDeviceOrientation() {
-    if ('DeviceOrientationEvent' in window) {
-      // iOS 13+ requires permission
-      if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-        document.getElementById('compassSvg').addEventListener('click', async () => {
-          try {
-            const response = await DeviceOrientationEvent.requestPermission();
-            if (response === 'granted') {
-              window.addEventListener('deviceorientation', handleOrientation);
-              orientationSupported = true;
-              demoMode = false;
-              updateModeTag();
-            }
-          } catch (e) {
-            console.warn('Device orientation permission denied');
+    if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+      // iOS 13+ requires permission via user gesture
+      document.getElementById('compassSvg').addEventListener('click', async () => {
+        try {
+          const response = await DeviceOrientationEvent.requestPermission();
+          if (response === 'granted') {
+            window.addEventListener('deviceorientation', handleOrientation);
+            orientationSupported = true;
+            demoMode = false;
+            updateModeTag();
           }
-        }, { once: true });
-      } else {
-        window.addEventListener('deviceorientation', handleOrientation);
-        // Check after a short delay if we actually got data
-        setTimeout(() => {
-          if (!orientationSupported) {
-            startDemoMode();
-          }
-        }, 1500);
-      }
+        } catch (e) {
+          console.warn('Device orientation permission denied');
+        }
+      }, { once: true });
+    } else if ('DeviceOrientationEvent' in window) {
+      // Android / Chrome: Prefer absolute orientation to prevent East becoming North
+      window.addEventListener('deviceorientationabsolute', handleOrientationAbsolute);
+      window.addEventListener('deviceorientation', handleOrientation);
+      
+      // Check after a short delay if we actually got data
+      setTimeout(() => {
+        if (!orientationSupported) {
+          startDemoMode();
+        }
+      }, 1500);
     } else {
       startDemoMode();
     }
   }
 
   function handleOrientation(e) {
+    // If we are successfully getting true absolute north events, ignore relative ones
+    if (isAbsoluteEventFired) return;
+
     if (e.alpha !== null) {
       orientationSupported = true;
       demoMode = false;
